@@ -1,117 +1,30 @@
 // Assignment Code
 const generateBtn = document.querySelector("#generate");
 
-let charNumber;
-let wantsLowercase;
-let wantsUppercase;
-let wantsNumber;
-let wantsSymbols;
-let newPass;
+let charNumber = [];
+let wantsLowercase = [];
+let wantsUppercase = [];
+let wantsNumber = [];
+let wantsSymbols = [];
+let newPass = [];
 
-// Variables for characters
-let lowerCaseGen = String.fromCharCode(Math.floor(Math.random() * 26) + 97);
+// These functions will allow us to generate random characters based on the net-comber.com character set.
 
-let upperCaseGen = String.fromCharCode(Math.floor(Math.random() * 26) + 65);
+function lowerCaseGen() {
+  return String.fromCharCode(Math.floor(Math.random() * 26) + 97);
+} 
+
+function upperCaseGen() {
+  return String.fromCharCode(Math.floor(Math.random() * 26) + 65);
+} 
   
-let numberGen = String.fromCharCode(Math.floor(Math.random() * 10) + 48);
+function numberGen(){ 
+  return String.fromCharCode(Math.floor(Math.random() * 10) + 48);
+}
 
-let symbolGen = String.fromCharCode(Math.floor(Math.random() * 16) + 32);
-
-
-// Define generatePassword function
-function generatePassword() {
-  let charNumber = window.prompt("How many characters would you like to have? Must be more than 8 and less than 128");
-
-  //The password cannot be created if the user selects cancel, so stop them from moving forward.
-  if(!charNumber){
-   window.alert("Please select the number of characters in your password.");
-
-   //Check for character lenght. If the user inputs a number outside of the range, do not proceed.. 
-  } else if (charNumber < 8 || charNumber > 128) {
-    charNumber = window.prompt("Your password must be between 8 and 128 characters.")
-
-    
-  } // Otherwise the function can continue.
-  
-    else {
-    wantsLowercase = window.confirm("Do you want lowercase letters in your password?");
-  
-    wantsUppercase = window.confirm("Do you want uppercase letters in your password?");
-  
-    wantsNumber = window.confirm("Do you want numbers in your password?");
-  
-    wantsSymbols = window.confirm("Do you want symbols characters in your password?");
-  };
-
-    if (!wantsLowercase && !wantsUppercase && !wantsNumber && !wantsSymbols) {
-    window.alert("Please select at least one criteria.")
-
-    // If the user selects all criteria.
-  } else if (wantsLowercase && wantsUppercase && wantsNumber && wantsSymbols) {
-    newPass = lowerCaseGen.concat(upperCaseGen, numberGen, symbolGen);
-
-  } 
-  // If the user only selects 3 criteria.
-
-    else if (wantsLowercase && wantsUppercase && wantsNumber) {
-    newPass = lowerCaseGen.concat(upperCaseGen, numberGen);
-
-  } else if (wantsLowercase && wantsUppercase && wantsSymbols) {
-    newPass = lowerCaseGen.concat(upperCaseGen, symbolGen);
-  
-  } else if (wantsUppercase && wantsUppercase && wantsSymbols) {
-    newPass = upperCaseGen.concat(numberGen, symbolGen);
-
-  } else if (wantsLowercase && wantsNumber && wantsSymbols) {
-    newPass = lowerCaseGen.concat(numberGen, symbolGen);
-  
-  }
-   // If the user only wants 2 criteria.
-  
-    else if (wantsLowercase && wantsUppercase) {
-    newPass = lowerCaseGen.concat(upperCaseGen);
-  
-  } else if (wantsLowercase && wantsNumber) {
-    newPass = lowerCaseGen.concat(numberGen);
-  
-  } else if (wantsLowercase && wantsSymbols) {
-    newPass = lowerCaseGen.concat(symbolGen);
-  
-  } else if (wantsUppercase && wantsNumber) {
-    newPass = upperCaseGen.concat(numberGen);
-  
-  } else if (wantsUppercase && wantsSymbols) {
-    newPass = upperCaseGen.concat(symbolGen);
-  
-  } else if (wantsNumber && wantsSymbols) {
-    newPass = numberGen.concat(symbolGen);
-  
-  } 
-
-  // If the user only wants one 1 criteria.
-
-    else if (wantsLowercase) {
-    newPass = lowerCaseGen;
-  
-  } else if (wantsUppercase) {
-    newPass = upperCaseGen;
-  
-   }else if (wantsNumber) {
-    newPass = numberGen;
-  
-  } else if (wantsSymbols) {
-    newPass = numberGen;
-  }
-
-  let noPass = [];
-
-  for (let i = 0; i < charNumber; i++) {
-    const combos = newPass[Math.floor(Math.random() * newPass.length)];
-    noPass.push(combos);
-  }
-    return newPass;
-};
-
+function symbolGen() {
+  return String.fromCharCode(Math.floor(Math.random() * 16) + 31);
+}
 
 // Write password to the #password input
 function writePassword() {
@@ -121,6 +34,64 @@ function writePassword() {
   passwordText.value = password;
 
 }
+
+// Define generatePassword function
+
+function generatePassword() {
+  let charNumber = window.prompt("How many characters would you like to have? Must be more than 8 and less than 128");
+
+  //The password cannot be created if the user selects cancel, so stop them from moving forward.
+
+   if(!charNumber){
+   window.prompt("Please select the number of characters in your password.");
+
+   //Check for character length. If the user inputs a number outside of the range, do not proceed.
+
+  } else if (charNumber < 8 || charNumber > 128) {
+    charNumber = window.alert("Your password must be between 8 and 128 characters.")
+    
+  } // Otherwise the function can continue.
+  
+    else {
+    wantsLowercase = window.confirm("Do you want lowercase letters in your password?");
+    wantsUppercase = window.confirm("Do you want uppercase letters in your password?");
+    wantsNumber = window.confirm("Do you want numbers in your password?");
+    wantsSymbols = window.confirm("Do you want symbols characters in your password?");
+  };
+
+    // Since the newPass variable is an array, we can use the push method to add the results of the functions to the array.
+
+    if (wantsLowercase) {
+        newPass.push(lowerCaseGen);
+    }
+    
+    if (wantsUppercase) {
+      newPass.push(upperCaseGen);
+    }
+
+    if (wantsNumber) {
+      newPass.push(numberGen);
+    }
+
+    if (wantsSymbols) {
+      newPass.push(symbolGen);
+    }
+
+    if (!wantsLowercase && !wantsUppercase && !wantsNumber && !wantsSymbols) {
+      window.alert("Please select at least one criteria.")
+      return password = "Null"
+    }
+
+    let noPass = [];
+    let combos = '';
+
+    // This for loop will allow the user to keep generating new password combonations without refreshing the browser window.
+    for (let i = 0; i < charNumber; i++) {
+    combos += newPass[Math.floor(Math.random() * newPass.length)]();
+    noPass.push(combos);
+  }
+    return combos;
+};
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
