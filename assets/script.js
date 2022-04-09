@@ -58,7 +58,7 @@ function generatePassword() {
     wantsLowercase = window.confirm("Do you want lowercase letters in your password?");
     wantsUppercase = window.confirm("Do you want uppercase letters in your password?");
     wantsNumber = window.confirm("Do you want numbers in your password?");
-    wantsSymbols = window.confirm("Do you want symbols characters in your password?");
+    wantsSymbols = window.confirm("Do you want symbols in your password?");
   };
 
     // Since the newPass variable is an array, we can use the push method to add the results of the functions to the array.
@@ -80,7 +80,7 @@ function generatePassword() {
     }
 
     // Make sure to include a case for when no criteria is picked 
-    
+
     if (!wantsLowercase && !wantsUppercase && !wantsNumber && !wantsSymbols) {
         window.alert("Please select at least one criteria.")
         return password = "Null"
