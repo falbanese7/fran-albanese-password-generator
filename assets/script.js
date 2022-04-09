@@ -87,8 +87,8 @@ function generatePassword() {
 
     // This for loop will allow the user to keep generating new password combonations without refreshing the browser window.
     for (let i = 0; i < charNumber; i++) {
-    combos += newPass[Math.floor(Math.random() * newPass.length)]();
-    noPass.push(combos);
+      combos += newPass[Math.floor(Math.random() * newPass.length)]();
+      noPass.push(combos);
   }
     return combos;
 };
