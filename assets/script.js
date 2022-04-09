@@ -66,20 +66,20 @@ function generatePassword() {
     }
     
     if (wantsUppercase) {
-      newPass.push(upperCaseGen);
+        newPass.push(upperCaseGen);
     }
 
     if (wantsNumber) {
-      newPass.push(numberGen);
+        newPass.push(numberGen);
     }
 
     if (wantsSymbols) {
-      newPass.push(symbolGen);
+        newPass.push(symbolGen);
     }
 
     if (!wantsLowercase && !wantsUppercase && !wantsNumber && !wantsSymbols) {
-      window.alert("Please select at least one criteria.")
-      return password = "Null"
+        window.alert("Please select at least one criteria.")
+        return password = "Null"
     }
 
     let noPass = [];
@@ -87,8 +87,8 @@ function generatePassword() {
 
     // This for loop will allow the user to keep generating new password combonations without refreshing the browser window.
     for (let i = 0; i < charNumber; i++) {
-      combos += newPass[Math.floor(Math.random() * newPass.length)]();
-      noPass.push(combos);
+        combos += newPass[Math.floor(Math.random() * newPass.length)]();
+        noPass.push(combos);
   }
     return combos;
 };
