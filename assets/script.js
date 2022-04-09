@@ -6,7 +6,6 @@ let wantsLowercase;
 let wantsUppercase;
 let wantsNumber;
 let wantsSymbols;
-let newPass = [];
 
 // These functions will allow us to generate random characters based on the net-comber.com character set.
 
@@ -23,7 +22,7 @@ function numberGen(){
 }
 
 function symbolGen() {
-  return String.fromCharCode(Math.floor(Math.random() * 16) + 31);
+  return String.fromCharCode(Math.floor(Math.random() * 15) + 33);
 }
 
 // Write password to the #password input
@@ -38,6 +37,9 @@ function writePassword() {
 // Define generatePassword function
 
 function generatePassword() {
+
+  let newPass = []; // newPass variable needs to be in the generatePassword function so that way it's reinitialized each time its run.
+
   let charNumber = window.prompt("How many characters would you like to have? Must be more than 8 and less than 128");
 
   //The password cannot be created if the user selects cancel, so stop them from moving forward.
@@ -77,6 +79,8 @@ function generatePassword() {
         newPass.push(symbolGen);
     }
 
+    // Make sure to include a case for when no criteria is picked 
+    
     if (!wantsLowercase && !wantsUppercase && !wantsNumber && !wantsSymbols) {
         window.alert("Please select at least one criteria.")
         return password = "Null"
@@ -86,6 +90,7 @@ function generatePassword() {
     let combos = '';
 
     // This for loop will allow the user to keep generating new password combonations without refreshing the browser window.
+
     for (let i = 0; i < charNumber; i++) {
         combos += newPass[Math.floor(Math.random() * newPass.length)]();
         noPass.push(combos);
