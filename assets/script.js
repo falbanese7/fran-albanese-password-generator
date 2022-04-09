@@ -1,11 +1,11 @@
 // Assignment Code
 const generateBtn = document.querySelector("#generate");
 
-let charNumber = [];
-let wantsLowercase = [];
-let wantsUppercase = [];
-let wantsNumber = [];
-let wantsSymbols = [];
+let charNumber;
+let wantsLowercase;
+let wantsUppercase;
+let wantsNumber;
+let wantsSymbols;
 let newPass = [];
 
 // These functions will allow us to generate random characters based on the net-comber.com character set.
@@ -43,7 +43,7 @@ function generatePassword() {
   //The password cannot be created if the user selects cancel, so stop them from moving forward.
 
    if(!charNumber){
-   window.prompt("Please select the number of characters in your password.");
+   window.alert("Please select the number of characters in your password.");
 
    //Check for character length. If the user inputs a number outside of the range, do not proceed.
 
