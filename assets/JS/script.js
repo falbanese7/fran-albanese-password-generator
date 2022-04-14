@@ -40,7 +40,7 @@ function generatePassword() {
 
   let newPass = []; // newPass variable needs to be in the generatePassword function so that way it's reinitialized each time its run.
 
-  let charNumber = window.prompt("How many characters would you like to have? Must be more than 8 and less than 128");
+  let charNumber = window.prompt("How many characters would you like to have? Must be at least 8 characters and at most 128.");
 
   //The password cannot be created if the user selects cancel, so stop them from moving forward.
 
@@ -59,7 +59,7 @@ function generatePassword() {
     wantsUppercase = window.confirm("Do you want uppercase letters in your password?");
     wantsNumber = window.confirm("Do you want numbers in your password?");
     wantsSymbols = window.confirm("Do you want symbols in your password?");
-  };
+  }
 
     // Since the newPass variable is an array, we can use the push method to add the results of the functions to the array.
 
