@@ -34,4 +34,4 @@ The user is able to click the Generate Password button again to obtain a new pas
 
 Thanks for checking out this application! 
 
-URL: https://falbanese96.github.io/fran-albanese-password-generator/
+URL: https://falbanese7.github.io/fran-albanese-password-generator/
